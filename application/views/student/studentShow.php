@@ -424,7 +424,64 @@ if ($sch_setting->student_note) {
                                             <?php
 }
 ?>
-
+                                            <tr>
+                                                <td><?php echo $this->lang->line('note'); ?></td>
+                                                <td><?php echo $student['note']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('case_id'); ?></td>
+                                                <td><?php echo $student['case_id']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('current_sap'); ?></td>
+                                                <td><?php echo $student['current_sap']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('sap_treatment'); ?></td>
+                                                <td><?php echo $student['sap_treatment']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('craft_results'); ?></td>
+                                                <td><?php echo $student['craft_results']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('notes_areas_not_in_dropdown'); ?></td>
+                                                <td><?php echo $student['notes_areas_not_in_dropdown']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('initial_referral_date'); ?></td>
+                                                <td><?php echo $student['initial_referral_date']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('intervention_status'); ?></td>
+                                                <td><?php echo $student['intervention_status']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('student_denies_all_use'); ?></td>
+                                                <td><?php echo $student['student_denies_all_use']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('concerns_mentioned_at_referral'); ?></td>
+                                                <td><?php echo $student['concerns_mentioned_at_referral']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('currently_using'); ?></td>
+                                                <td><?php echo $student['currently_using']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('past_use'); ?></td>
+                                                <td><?php echo $student['past_use']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('seek_info_friend_or_family_use'); ?></td>
+                                                <td><?php echo $student['seek_info_friend_or_family_use']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('seek_info_considering_use'); ?></td>
+                                                <td><?php echo $student['seek_info_considering_use']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('distributing_substance'); ?></td>
+                                                <td><?php echo $student['distributing_substance']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('sap_disc_completion_date'); ?></td>
+                                                <td><?php echo $student['sap_disc_completion_date']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('alcohol'); ?></td>
+                                                <td><?php echo $student['alcohol']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('tobaccos'); ?></td>
+                                                <td><?php echo $student['tobaccos']; ?></td>
+                                            <tr>
+                                                <td><?php echo $this->lang->line('drugs'); ?></td>
+                                                <td><?php echo $student['drugs']; ?></td>
                                         </tbody>
                                     </table>
                                 </div>

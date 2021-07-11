@@ -277,6 +277,7 @@ class Student extends Admin_Controller
             $this->form_validation->set_rules('admission_no', $this->lang->line('admission_no'), 'trim|required|xss_clean|is_unique[students.admission_no]');
         }
         $this->form_validation->set_rules('file', $this->lang->line('image'), 'callback_handle_upload');
+        $this->form_validation->set_rules('case_id', $this->lang->line('case_id'), 'trim|xss_clean|is_unique[students.case_id]');
 
         if ($this->form_validation->run() == false) {
 
@@ -341,6 +342,22 @@ class Student extends Admin_Controller
                 'hostel_room_id'    => $hostel_room_id,
                 'note'              => $this->input->post('note'),
                 'is_active'         => 'yes',
+                'case_id'           => $this->input->post('case_id'),
+                'current_sap'       => $this->input->post('current_sap'),
+                'sap_treatment'     => $this->input->post('sap_treatment'),
+                'craft_results'     => $this->input->post('craft_results'),
+                'notes_areas_not_in_dropdown'   => $this->input->post('notes_area_not_in_dropdown'),
+                'intervention_status'           => $this->input->post('intervention_status'),
+                'student_denies_all_use'        => $this->input->post('stu_deny_all_use'),
+                'concerns_mentioned_at_referral'=> $this->input->post('concern_mentioned_refer'),
+                'currently_using'   => $this->input->post('cur_using'),
+                'past_use'          => $this->input->post('past_use'),
+                'seek_info_friend_or_family_use'=> $this->input->post('seek_info_friend_use'),
+                'seek_info_considering_use'     => $this->input->post('seek_info_consider_use'),
+                'distributing_substance'        => $this->input->post('distrb_substance'),
+                'alcohol'           => $this->input->post('alcohol'),
+                'tobaccos'          => $this->input->post('tobaccos'),
+                'drugs'             => $this->input->post('drugs')
             );
             if ($this->sch_setting_detail->guardian_occupation) {
                 $data_insert['guardian_occupation'] = $this->input->post('guardian_occupation');
@@ -369,9 +386,19 @@ class Student extends Admin_Controller
             $mother_name       = $this->input->post('mother_name');
             $mother_phone      = $this->input->post('mother_phone');
             $mother_occupation = $this->input->post('mother_occupation');
+            $initial_referral_date    = $this->input->post('init_refer_date');
+            $sap_disc_completion_date = $this->input->post('sap_complete_date');
 
             if ($this->sch_setting_detail->guardian_name) {
                 $data_insert['guardian_is'] = $this->input->post('guardian_is');
+            }
+
+            if (isset($initial_referral_date)) {
+                $data_insert['initial_referral_date'] = $this->customlib->dateFormatToYYYYMMDD($initial_referral_date);
+            }
+
+            if (isset($sap_disc_completion_date)) {
+                $data_insert['sap_disc_completion_date'] = $this->customlib->dateFormatToYYYYMMDD($sap_disc_completion_date);
             }
 
             if (isset($measurement_date)) {
@@ -1213,6 +1240,7 @@ class Student extends Admin_Controller
 
             $this->form_validation->set_rules('admission_no', $this->lang->line('admission_no'), array('required', array('check_admission_no_exists', array($this->student_model, 'valid_student_admission_no'))));
         }
+        $this->form_validation->set_rules('case_id', $this->lang->line('case_id'), array(array('check_case_id_exists', array($this->student_model, 'valid_student_case_id'))));
 
         $this->form_validation->set_rules('file', $this->lang->line('image'), 'callback_handle_upload');
         $this->form_validation->set_rules('father_pic', $this->lang->line('image'), 'callback_handle_father_upload');
@@ -1285,6 +1313,22 @@ class Student extends Admin_Controller
                 'hostel_room_id'    => $hostel_room_id,
                 'note'              => $this->input->post('note'),
                 'is_active'         => 'yes',
+                'case_id'           => $this->input->post('case_id'),
+                'current_sap'       => $this->input->post('current_sap'),
+                'sap_treatment'     => $this->input->post('sap_treatment'),
+                'craft_results'     => $this->input->post('craft_results'),
+                'notes_areas_not_in_dropdown'   => $this->input->post('notes_area_not_in_dropdown'),
+                'intervention_status'           => $this->input->post('intervention_status'),
+                'student_denies_all_use'        => $this->input->post('stu_deny_all_use'),
+                'concerns_mentioned_at_referral'=> $this->input->post('concern_mentioned_refer'),
+                'currently_using'   => $this->input->post('cur_using'),
+                'past_use'          => $this->input->post('past_use'),
+                'seek_info_friend_or_family_use'=> $this->input->post('seek_info_friend_use'),
+                'seek_info_considering_use'     => $this->input->post('seek_info_consider_use'),
+                'distributing_substance'        => $this->input->post('distrb_substance'),
+                'alcohol'           => $this->input->post('alcohol'),
+                'tobaccos'          => $this->input->post('tobaccos'),
+                'drugs'             => $this->input->post('drugs')
             );
             if ($this->sch_setting_detail->guardian_occupation) {
                 $data['guardian_occupation'] = $this->input->post('guardian_occupation');
@@ -1308,9 +1352,19 @@ class Student extends Admin_Controller
             $mother_name       = $this->input->post('mother_name');
             $mother_phone      = $this->input->post('mother_phone');
             $mother_occupation = $this->input->post('mother_occupation');
+            $initial_referral_date    = $this->input->post('init_refer_date');
+            $sap_disc_completion_date = $this->input->post('sap_complete_date');
 
             if ($this->sch_setting_detail->guardian_name) {
                 $data['guardian_is'] = $this->input->post('guardian_is');
+            }
+
+            if (isset($initial_referral_date)) {
+                $data['initial_referral_date'] = $this->customlib->dateFormatToYYYYMMDD($initial_referral_date);
+            }
+
+            if (isset($sap_disc_completion_date)) {
+                $data['sap_disc_completion_date'] = $this->customlib->dateFormatToYYYYMMDD($sap_disc_completion_date);
             }
 
             if (isset($measurement_date)) {

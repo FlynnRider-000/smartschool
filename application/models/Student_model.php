@@ -229,6 +229,7 @@ class Student_model extends MY_Model
     {
         $this->db->select('student_session.transport_fees,students.app_key,students.parent_app_key,students.vehroute_id,vehicle_routes.route_id,vehicle_routes.vehicle_id,transport_route.route_title,vehicles.vehicle_no,hostel_rooms.room_no,vehicles.driver_name,vehicles.driver_contact,hostel.id as `hostel_id`,hostel.hostel_name,room_types.id as `room_type_id`,room_types.room_type ,students.hostel_room_id,student_session.id as `student_session_id`,student_session.fees_discount,classes.id AS `class_id`,classes.class,sections.id AS `section_id`,sections.section,students.id,students.admission_no , students.roll_no,students.admission_date,students.firstname,students.middlename,  students.lastname,students.image,    students.mobileno, students.email ,students.state ,   students.city , students.pincode , students.note, students.religion, students.cast, school_houses.house_name,   students.dob ,students.current_address, students.previous_school,
             students.guardian_is,students.parent_id,
+            students.case_id, students.current_sap, students.sap_treatment, students.craft_results, students.notes_areas_not_in_dropdown, students.initial_referral_date, students.intervention_status, students.student_denies_all_use, students.concerns_mentioned_at_referral, students.currently_using, students.past_use, students.seek_info_friend_or_family_use, students.seek_info_considering_use, students.distributing_substance, students.sap_disc_completion_date, students.alcohol, students.tobaccos, students.drugs,
             students.permanent_address,students.category_id,students.adhar_no,students.samagra_id,students.bank_account_no,students.bank_name, students.ifsc_code , students.guardian_name , students.father_pic ,students.height ,students.weight,students.measurement_date, students.mother_pic , students.guardian_pic , students.guardian_relation,students.guardian_phone,students.guardian_address,students.is_active ,students.created_at ,students.updated_at,students.father_name,students.father_phone,students.blood_group,students.school_house_id,students.father_occupation,students.mother_name,students.mother_phone,students.mother_occupation,students.guardian_occupation,students.gender,students.guardian_is,students.rte,students.guardian_email, users.username,users.password,students.dis_reason,students.dis_note,students.disable_at')->from('students');
         $this->db->join('student_session', 'student_session.student_id = students.id');
         $this->db->join('classes', 'student_session.class_id = classes.id');
@@ -263,6 +264,7 @@ class Student_model extends MY_Model
 
         $this->db->select('student_session.transport_fees,students.vehroute_id,vehicle_routes.route_id,vehicle_routes.vehicle_id,transport_route.route_title,vehicles.vehicle_no,hostel_rooms.room_no,vehicles.driver_name,vehicles.driver_contact,hostel.id as `hostel_id`,hostel.hostel_name,room_types.id as `room_type_id`,room_types.room_type ,students.hostel_room_id,student_session.id as `student_session_id`,student_session.fees_discount,classes.id AS `class_id`,classes.class,sections.id AS `section_id`,sections.section,students.id,students.admission_no , students.roll_no,students.admission_date,students.firstname, students.middlename, students.lastname,students.image,    students.mobileno, students.email ,students.state ,   students.city , students.pincode , students.note, students.religion, students.cast, school_houses.house_name,   students.dob ,students.current_address, students.previous_school,
             students.guardian_is,students.parent_id,
+            students.case_id, students.current_sap, students.sap_treatment, students.craft_results, students.notes_areas_not_in_dropdown, students.initial_referral_date, students.intervention_status, students.student_denies_all_use, students.concerns_mentioned_at_referral, students.currently_using, students.past_use, students.seek_info_friend_or_family_use, students.seek_info_considering_use, students.distributing_substance, students.sap_disc_completion_date, students.alcohol, students.tobaccos, students.drugs,
             students.permanent_address,students.category_id,students.adhar_no,students.samagra_id,students.bank_account_no,students.bank_name, students.ifsc_code , students.guardian_name , students.father_pic ,students.height ,students.weight,students.measurement_date, students.mother_pic , students.guardian_pic , students.guardian_relation,students.guardian_phone,students.guardian_address,students.is_active ,students.created_at ,students.updated_at,students.father_name,students.father_phone,students.blood_group,students.school_house_id,students.father_occupation,students.mother_name,students.mother_phone,students.mother_occupation,students.guardian_occupation,students.gender,students.guardian_is,students.rte,students.guardian_email, users.username,users.password,students.dis_reason,students.dis_note')->from('students');
         $this->db->join('student_session', 'student_session.student_id = students.id');
         $this->db->join('classes', 'student_session.class_id = classes.id');
@@ -1712,6 +1714,52 @@ class Student_model extends MY_Model
         } else {
 
             $this->db->where(array('class_id' => $class, 'admission_no' => $admission_no));
+            $query = $this->db->join("student_session", "students.id = student_session.student_id")->get('students');
+
+            if ($query->num_rows() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function valid_student_case_id()
+    {
+
+        $case_id = $this->input->post('case_id');
+        $student_id   = $this->input->post('studentid');
+
+        if ($case_id != "") {
+
+            if (!isset($student_id)) {
+                $student_id = 0;
+            }
+
+            if ($this->check_case_id_exists($case_id, $student_id)) {
+                $this->form_validation->set_message('check_case_id_exists', 'Case Id No Exists');
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return true;
+    }
+
+    public function check_case_id_exists($case_id, $student_id)
+    {
+
+        if ($student_id != 0) {
+            $data  = array('students.id != ' => $student_id, 'students.case_id' => $case_id);
+            $query = $this->db->where($data)->join("student_session", "students.id = student_session.student_id")->get('students');
+            if ($query->num_rows() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+
+            $this->db->where(array('class_id' => $class, 'case_id' => $case_id));
             $query = $this->db->join("student_session", "students.id = student_session.student_id")->get('students');
 
             if ($query->num_rows() > 0) {

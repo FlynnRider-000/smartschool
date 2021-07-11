@@ -314,6 +314,167 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('current_sap'); ?></label>
+                                                <input id="current_sap" name="current_sap" placeholder="" type="text" class="form-control"  value="<?php echo set_value('current_sap', $student['current_sap']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('current_sap'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('sap_treatment'); ?></label>
+                                                <input id="sap_treatment" name="sap_treatment" placeholder="" type="text" class="form-control"  value="<?php echo set_value('sap_treatment', $student['sap_treatment']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('sap_treatment'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('case_id'); ?></label>
+                                                <input id="case_id" name="case_id" placeholder="" type="text" class="form-control"  value="<?php echo set_value('case_id', $student['case_id']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('case_id'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('craft_results'); ?></label>
+                                                <input id="craft_results" name="craft_results" placeholder="" type="text" class="form-control"  value="<?php echo set_value('craft_results', $student['craft_results']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('craft_results'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('notes_areas_not_in_dropdown'); ?></label>
+                                                <input id="notes_area_not_in_dropdown" name="notes_area_not_in_dropdown" placeholder="" type="text" class="form-control"  value="<?php echo set_value('notes_area_not_in_dropdown', $student['notes_areas_not_in_dropdown']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('notes_area_not_in_dropdown'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('initial_referral_date'); ?></label>
+                                                <?php
+                                                $initial_referral_date="";
+                                                if($student['initial_referral_date']!='0000-00-00' && $student['initial_referral_date']!=''){
+                                                    $initial_referral_date=date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($student['initial_referral_date']));
+                                                    }
+                                                 ?>
+                                                <input id="init_refer_date" name="init_refer_date" placeholder="" type="text" class="form-control date"  value="<?php echo set_value('init_refer_date', $initial_referral_date); ?>" />
+                                                <span class="text-danger"><?php echo form_error('init_refer_date'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('intervention_status'); ?></label>
+                                                <input id="intervention_status" name="intervention_status" placeholder="" type="text" class="form-control"  value="<?php echo set_value('intervention_status', $student['intervention_status']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('intervention_status'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('student_denies_all_use'); ?></label>
+                                                <select class="form-control" rows="3" placeholder="" name="stu_deny_all_use">
+                                                    <option value="yes"><?php echo $this->lang->line('yes') ?></option>
+                                                    <option value="no"><?php echo $this->lang->line('no') ?></option>
+                                                </select>
+                                                <span class="text-danger"><?php echo form_error('stu_deny_all_use'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('concerns_mentioned_at_referral'); ?></label>
+                                                <input id="concern_mentioned_refer" name="concern_mentioned_refer" placeholder="" type="text" class="form-control"  value="<?php echo set_value('concern_mentioned_refer', $student['concerns_mentioned_at_referral']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('concern_mentioned_refer'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('currently_using'); ?></label>
+                                                <input id="cur_using" name="cur_using" placeholder="" type="text" class="form-control"  value="<?php echo set_value('cur_using', $student['currently_using']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('cur_using'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('past_use'); ?></label>
+                                                <input id="past_use" name="past_use" placeholder="" type="text" class="form-control"  value="<?php echo set_value('past_use', $student['past_use']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('past_use'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('seek_info_friend_or_family_use'); ?></label>
+                                                <input id="seek_info_friend_use" name="seek_info_friend_use" placeholder="" type="text" class="form-control"  value="<?php echo set_value('seek_info_friend_use', $student['seek_info_friend_or_family_use']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('seek_info_friend_use'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('seek_info_considering_use'); ?></label>
+                                                <input id="seek_info_consider_use" name="seek_info_consider_use" placeholder="" type="text" class="form-control"  value="<?php echo set_value('seek_info_consider_use', $student['seek_info_considering_use']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('seek_info_consider_use'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('distributing_substance'); ?></label>
+                                                <input id="distrb_substance" name="distrb_substance" placeholder="" type="text" class="form-control"  value="<?php echo set_value('distrb_substance', $student['distributing_substance']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('distrb_substance'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('sap_disc_completion_date'); ?></label>
+                                                <?php
+                                                $sap_disc_completion_date="";
+                                                if($student['sap_disc_completion_date']!='0000-00-00' && $student['sap_disc_completion_date']!=''){
+                                                    $sap_disc_completion_date=date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($student['sap_disc_completion_date']));
+                                                    }
+                                                 ?>
+                                                <input id="sap_complete_date" name="sap_complete_date" placeholder="" type="text" class="form-control date"  value="<?php echo set_value('sap_complete_date', $sap_disc_completion_date); ?>" />
+                                                <span class="text-danger"><?php echo form_error('sap_complete_date'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('alcohol'); ?></label>
+                                                <input id="alcohol" name="alcohol" placeholder="" type="text" class="form-control"  value="<?php echo set_value('alcohol', $student['alcohol']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('alcohol'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('tobaccos'); ?></label>
+                                                <input id="tobaccos" name="tobaccos" placeholder="" type="text" class="form-control"  value="<?php echo set_value('tobaccos', $student['tobaccos']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('tobaccos'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('drugs'); ?></label>
+                                                <input id="drugs" name="drugs" placeholder="" type="text" class="form-control"  value="<?php echo set_value('drugs', $student['drugs']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('drugs'); ?></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
 
 <?php
 echo display_custom_fields('students', $student['id']);
