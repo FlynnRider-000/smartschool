@@ -301,35 +301,19 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                 </div>
                                             </div>
 <?php } ?>
-                                        <div class="col-md-3 pt25">
+                                        <!-- <div class="col-md-3 pt25">
                                             <div class="row">
                                                 <div class="col-lg-5 col-md-6 col-sm-3 col-xs-5">
-                                                    <button type="button" class="btn btn-sm btn-primary mysiblings anchorbtn"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add'); ?> <?php echo $this->lang->line('sibling'); ?></button>
+                                                    <button type="button" class="btn btn-sm btn-primary mysiblings anchorbtn"><i class="fa fa-plus"></i> <?php // echo $this->lang->line('add'); ?> <?php // echo $this->lang->line('sibling'); ?></button>
                                                 </div>
                                                 <div class="col-lg-7 col-md-6 col-sm-9 col-xs-7">
                                                     <div class="pt6 overflowtextdot">
-                                                        <span id="sibling_name" class="label label-success"><?php echo set_value('sibling_name'); ?></span></div>
+                                                        <span id="sibling_name" class="label label-success"><?php // echo set_value('sibling_name'); ?></span></div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('current_sap'); ?></label>
-                                                <input id="current_sap" name="current_sap" placeholder="" type="text" class="form-control"  value="<?php echo set_value('current_sap', $student['current_sap']); ?>" />
-                                                <span class="text-danger"><?php echo form_error('current_sap'); ?></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('sap_treatment'); ?></label>
-                                                <input id="sap_treatment" name="sap_treatment" placeholder="" type="text" class="form-control"  value="<?php echo set_value('sap_treatment', $student['sap_treatment']); ?>" />
-                                                <span class="text-danger"><?php echo form_error('sap_treatment'); ?></span>
-                                            </div>
-                                        </div>
-
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"><?php echo $this->lang->line('case_id'); ?></label>
@@ -365,6 +349,22 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                  ?>
                                                 <input id="init_refer_date" name="init_refer_date" placeholder="" type="text" class="form-control date"  value="<?php echo set_value('init_refer_date', $initial_referral_date); ?>" />
                                                 <span class="text-danger"><?php echo form_error('init_refer_date'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('current_sap'); ?></label>
+                                                <input id="current_sap" name="current_sap" placeholder="" type="text" class="form-control"  value="<?php echo set_value('current_sap', $student['current_sap']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('current_sap'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('sap_treatment'); ?></label>
+                                                <input id="sap_treatment" name="sap_treatment" placeholder="" type="text" class="form-control"  value="<?php echo set_value('sap_treatment', $student['sap_treatment']); ?>" />
+                                                <span class="text-danger"><?php echo form_error('sap_treatment'); ?></span>
                                             </div>
                                         </div>
 
